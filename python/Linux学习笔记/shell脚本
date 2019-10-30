@@ -1,0 +1,50 @@
+shell脚本
+1，bash漏洞
+2执行脚本
+  ./test.sh
+  sh test.sh
+  source test.sh  . test.sh  可以将脚本中的环境变量带到当前环境
+  source /etc/init.d/functions
+  action  "this is functions"  /bin.ture
+   $@ 参数一个一个传递
+   $* 参数整体传递  
+   $# 获得参数个数
+3 变量子串
+4 变量的数值计算（http://oldboy.blog.51cto.com/2561410/756234）
+ (())（效率最高）
+ ,let,
+ expr, expr 2 +3  ；expr $[2+3]运算符左右都有空格;判断扩展名 expr $1 + 0 >/dev/null 2>&1##判断$1是否为整数
+ bc,支持小数运算
+ $[]
+ $((a++)) 
+ $((++a)) 
+ 变量a在前，表达式的值为a，然后a自增或者自减。变量a在后，表达式先自增，然后a自增
+5，test条件判断 [] [[]]
+6，if语句
+7 while  until
+8 for
+9 case
+10 函数 
+   function 函数名（）{
+		指令
+		return
+	}
+	1，传参
+11 数组
+      替换
+	  切片
+	  ${array[@]}  所有元素 
+	  ${#array[@]} 长度
+	  ${array[i]}   单个元素 i是下标
+12 md5sum
+
+
+
+
+
+
+
+
+
+
+

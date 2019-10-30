@@ -1,0 +1,80 @@
+20.02.05.
+
+一，基本操作  流程20.07.01.03
+	pip  install   scrapy  					#安装
+	scrapy   startproject  myspider  		# 创建一个爬虫工程
+	cd   myspider							#进入到爬虫目录下
+	scrapy   genspider  itcast  itcast.cn	#创建一个爬虫任务，可以创建多个
+	scrapy crawl itcast						#启动任务
+	log 日志分为四个等级  debug   info   warning  error
+	在setting中设置爬虫日志等级  LOG_LEVEL = "WARNING"   
+
+二，开启pipeline
+	在setting文件中打开注释，中间件的位置myspider.pipelines.MyspiderPipeline，300是距离引擎的位置
+	，当有个多个中间件时，决定先经过哪个，数据越小表示距离引擎越近，数据越先经过
+		ITEM_PIPELINES = {
+	   'myspider.pipelines.MyspiderPipeline': 300,
+	}
+三  logging 20.02.02
+	scrapy：
+		LOG_LEVEL = "WARNING"
+		LOG_FILE = "./log.log"  设置日志保存位置
+		logger = logging.getLogger(__name__)  实例化logger，可以输出文件位置
+		
+	普通项目中
+		import   logging
+		logging.basicConfig（...）  #设置日志格式，网上找
+		实例化一个 ‘logger = logging.getLogger(__name__)’
+		在任何py文件中调用logger即可
+		
+		http://hr.tencent.com/position.php
+四   scrapy shell
+
+ meta进行值传递时，要进行深copy   20.03.02
+ 
+五 crawlspider 20.04.01
+	crawlspider使用
+	常见爬虫 scrapy  genspider -t crawl  爬虫名 allow_domain
+	指定start-url，对应的响应会进行rules提取url地址
+	完善rules，添加rule
+	
+	注意点：
+		url地址不完善，crawlspider会自动补充完整之后再请求
+		parse函数不能定义，他有特殊的功能需要定义
+		callback：连接提取器提取出来的url地址对应的响应交给他处理
+		follow：连接提取器提取出来的url地址的响应是否继续呗rules来过滤
+	
+六  scrapy  携带cookie登录人人网
+	在D:\python\cookie_login 目录下
+	
+	post登录GitHub  20.05.03
+		自己找from表单中的action
+		利用fromrequest.from_response
+	思维导图 20.05.04
+	
+七  scrapy-redis
+	源码地址https://github.com/rmax/scrapy-redis
+	持久化去重，分布式
+	增量爬虫，爬的数据不会再爬取
+	redis中文文档 http://www.redis.cn/commands.html
+	scrapy-redis源码讲解20.07.4
+	jd书城爬虫   20.07.05
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

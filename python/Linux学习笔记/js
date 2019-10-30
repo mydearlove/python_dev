@@ -1,0 +1,370 @@
+JavaScript
+	js独立的语言，浏览器具有js的解释器
+	jaascript存在形式：
+		- Head中
+                <script>
+                    //javascript代码
+                    alert(123);
+                </script>
+                
+                <script type="text/javascript">
+                    //javascript代码
+                    alert(123);
+                </script>
+        - 文件
+            <script src='js文件路径'> </script>
+		PS: JS代码需要放置在 <body>标签内部的最下方	
+	注释
+        当行注释 //
+        多行注释  /*     */		
+	变量：
+        
+        python：
+            name = 'alex'
+        JavaScript:
+            name = 'alex'     # 全局变量
+            var name = 'eric' # 局部变量
+        
+    写Js代码：
+        - html文件中编写
+        - 临时，浏览器的终端 console
+	基本数据类型
+        数字
+            a = 18;
+        字符串
+            a = "alex"
+            a.chartAt(索引位置)
+            a.substring(起始位置，结束位置)
+            a.lenght    获取当前字符串长度
+            ...
+        列表(数组)
+            a = [11,22,33]
+            
+        字典
+            a = {'k1':'v1','k2':'v2'}
+        布尔类型
+            小写
+	条件语句
+		if(条件){
+        
+        }else if(条件){
+            
+        }else if(条件){
+            
+        }else{
+            
+        }
+        
+        ==   值相等
+        ===  值和类型都相等
+        &&   and
+        ||   or
+	for循环
+		1. 循环时，循环的元素是索引
+        
+            a = [11,22,33,44]
+            for(var item in a){
+                console.log(item);
+            }
+            
+            a = {'k1':'v1','k2':'v2'}
+            for(var item in a){
+                console.log(item);
+            }
+            
+        2. 
+            for(var i=0;i<10;i=i+1){
+                
+            }
+            
+            a = [11,22,33,44]
+            for(var i=0;i<a.length;i=i+1){
+                
+            }
+            
+            不支持字典的循环
+	switch
+		switch(name){
+		case '1':
+			age=123
+			break
+		case '2':
+			age = 456
+			break
+		default:
+			age = 777
+		}
+	
+	定时器
+		setInterval（‘执行代码’，2000（两秒）间隔时间）
+		var obj = setInterval（‘执行代码’，2000（两秒）  获取定时器
+		clearInterval（obj）   							 取消定时器
+		
+		var obj2 = setTimeout(function(),5000)  									 只执行一次
+		clearTimeout(obj2)
+    函数：
+    
+        
+        function 函数名(a,b,c){
+        
+        }
+        
+        函数名(1,2,3)
+		普通函数
+			function·func(){}
+		匿名函数 
+			setInterval（function(){ console.log(123)}，2000)
+		自执行函数(创建函数，自动执行)
+			(function(arg)){
+				console.log(arg);
+			}(1);
+	序列化
+		li=[11,22,33,44]
+		JSON.stringify(li)  将对象转化为字符串
+		JSON.paser   		将字符串转化 成对象类型
+	转义
+		客户端（cookie） =》服务端
+		将数据经过转义后，保存在cookie中
+	eval
+		python：
+			val=eval(表达式)  可以拿到返回值
+			exec（执行代码）  无法拿到返回值
+		javascript
+			exec  都可以
+	时间处理
+		Date类
+			var d = new Date()
+			获取都是d.get***
+			设置都是d.set***
+	作用域  16.14
+		1	js以函数为作用域
+		2   函数的作用域在函数未被调用前已经创建
+		3  函数的作用域存在作用域链，并且也是在未被调用前创建
+		4   函数局部变量提前声明     16.15
+		<script>
+        var myTrs = document.getElementsByTagName("tr");
+        var  len = myTrs.length;
+        for(var i=0;i<len;i++){
+            myTrs[i].onmouseover =function () {
+//                谁调用这个函数this是谁  这里是myTrs[i]
+                this.style.backgroundColor = 'red'
+				 //如果把this改为myTrs[i] 代码报错，作用域出错，16.22
+            }
+            myTrs[i].onmouseout =function () {
+                this.style.backgroundColor = ''
+            }
+		
+	js面向对象  16.16
+		function Foo(n){
+			this.name = n;
+		}
+		var obj = new Foo('we');
+		a, this代指对象（python self）
+		b, 创建对象时，new 函数()
+		原型
+			function Foo(n){
+				this.name = n;
+			}
+			#Foo原型
+			Foo.prototype = {
+				'sayname':function(){
+					console.log(this.name)
+				}
+			}
+			obj1 = new Foo('we');
+			obj1.sayname()
+	
+	事件
+		onclick  点击时发生
+		onblur   事件会在对象失去焦点时发生。
+		onfocus  事件在获取焦点是发成
+Dom
+    1、找到标签
+        获取单个元素        document.getElementById('i1')
+        获取多个元素（列表）document.getElementsByTagName('div')
+        获取多个元素（列表）document.getElementsByClassName('c1')
+        a. 直接找
+            document.getElementById             根据ID获取一个标签
+            document.getElementsByName          根据name属性获取标签集合
+            document.getElementsByClassName     根据class属性获取标签集合
+            document.getElementsByTagName       根据标签名获取标签集合
+        
+        b. 间接
+            tag = document.getElementById('i1')
+            
+            parentElement           // 父节点标签元素
+            children                // 所有子标签
+            firstElementChild       // 第一个子标签元素
+            lastElementChild        // 最后一个子标签元素
+            nextElementtSibling     // 下一个兄弟标签元素
+            previousElementSibling  // 上一个兄弟标签元素
+		2、操作标签
+        
+        a. innerText  仅文本
+            
+            获取标签中的文本内容
+            标签.innerText
+            
+            对标签内部文本进行重新复制
+            
+            标签.innerText = ""
+		b    
+			innerHTML  全部内容
+            
+        c. className  样式操作
+            tag.className =》 直接整体做操作
+				tag.classList.add('样式名')   添加指定样式
+				tag.classList.remove('样式名')   删除指定样式
+			<style>
+				.c1{
+					font-size:16px;
+					color:red;
+					..
+				}
+			</style>
+			<div class = "c1 c2 style ="font-size:16px;background-color:red;"></div>
+			obj.style.fontSize = '16px'
+			obj.style.backGroundColor = 'red'
+            PS：
+            
+                <div onclick='func();'>点我</div>
+                <script>
+                    function func(){
+                    
+                    }
+                
+                </script>
+			属性操作
+				attributes  
+				getAttribute
+				removeAttribute
+			创建标签，并添加到HTML中
+				a , 字符串形式
+				b  ,对象形式
+					document.createElement('div')
+			
+			提交表单
+				任何标签通过DOM都可以提交表单
+				document.getElementById('form').submit()
+			
+			其他
+				console.log()
+				alert
+				var v = confirm(信息)  v:true false
+				location.href  获取当前url
+				location.href= ""   重定向 跳转
+				 location.href = location.href =》  location.reload  页面刷新
+		
+        d. checkbox  
+                获取值
+                checkbox对象.checked
+                设置值
+                checkbox对象.checked = true
+		
+
+		f   value  16.17
+				input  		value获取当前标签的值，也可以重新赋值
+				select  	获取选中的value值，也可以重新赋值（selectindex）
+				textarea	value获取当前标签的值，也可以重新赋值
+
+		
+		
+		行为 样式，结构 相分离的页面
+		js   css   html
+		
+		绑定事件两种方法
+			1  直接标签绑定  onclick = ‘func（）’
+			2   选获取Dom对象，然后进行绑定
+				document.getElementById('id').foclick
+			this  当前触发事件的标签  16.22
+				1 第一种绑定方式
+					<input id ='i1' type = 'butten'  onclick = onClick(this)/>
+					function  onClick(self)
+					//self   当前点击的标签
+				2  第二种绑定方式
+					<input id = 'i1' type = 'butten'>
+					document.getElementById('i1').onclick = function(){
+					  //this 代指当前点击的标签
+					}
+			3  捕捉与冒泡  16.23
+		词法分析  16.24
+			
+			
+
+		onmouseover事件：指鼠标移动都某个指点的HTML标签上，会出现什么效果
+		onmouseout事件：指鼠标移出某个指点的HTML标签后，会出现什么效果。
+		onfocus：事件在对象获得焦点时发生。 即当鼠标点击时，触发的事件，
+		onblur： 事件会在对象失去焦点时发生 即当鼠标点击另一处时所触发的事件
+		
+
+
+
+
+1、JS 正则
+
+
+	test   - 判断字符串是否符合规定的正则
+		rep = /\d+/;
+		rep.test("asdfoiklfasdf89asdfasdf")
+		# true
+		
+		rep = /^\d+$/;
+		rep.test("asdfoiklfasdf89asdfasdf")
+		# true
+		
+	exec   - 获取匹配的数据
+		rep = /\d+/;
+		str = "wangshen_67_houyafa_20"
+		rep.exec(str)
+		# ["67"]
+		
+		JavaScript is more fun than Java or JavaBeans!
+		var pattern = /\bJava(\w*)\b/;
+		# ["JavaScript", "Script"]
+		
+		
+		JavaScript is more fun than Java or JavaBeans!
+		var pattern = /\bJava\w*\b/g;
+		# ["JavaScript"]
+		# ["Java"]
+		# ["JavaBeans"]
+		# null
+		
+		JavaScript is more fun than Java or JavaBeans!
+		var pattern = /\bJava(\w*)\b/g;
+		# ["JavaScript",'Script']
+		# ["Java", ""]
+		# ["JavaBeans", "Beans"]
+		# null
+		
+	多行匹配：
+		默认就是多行匹配
+		^$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

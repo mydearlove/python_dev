@@ -1,0 +1,21 @@
+django-redis   设置缓存   https://django-redis-chs.readthedocs.io/zh_CN/latest/#
+	模板继承   14.05.01
+	login_requier  装饰器，判断用户是否登录
+	LoginRequiredMixin   判断用户是否登录
+	django  中文文档  https://docs.djangoproject.com/zh-hans/2.0/
+	fastDFS   分布式文件系统
+	nginx  +   fastdfs
+	django 缓存  https://docs.djangoproject.com/zh-hans/2.2/topics/cache/
+	autoescape  on
+	endautoescape
+	模板语言
+	haystack  全文检索框架
+	whoosh   搜索引擎
+	jieba  分词模块
+	悲观锁，乐观锁
+	事务的隔离级别
+	mysql  默认的隔离级别  可重复读  四个级别
+	python写一个简单的API
+	支付宝  API
+	 支付宝  python 接口
+	 uwsgithis is  testthis is  testthis is  testthis is  test

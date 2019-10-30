@@ -1,0 +1,331 @@
+python
+D:\360WiFi\360安全浏览器下载\kawaks\Kawaks 1.45 最终中文典藏版
+https://www.cnblogs.com/f-ck-need-u/p/9127699.html
+51cto.com/916406/1834777
+import getpass  ##加密密码
+.
+#!/usr/bin/env python env找python解释器
+
+IndentationErorr  缩进错误
+
+if while  for 语句
+sys模块
+os  模块 
+	os.popen("dir").read 
+	os.system
+	os.mkdir
+编译型语言，解释型语言
+数据类型
+
+encode编码  decode解码
+
+
+列表
+  浅拷贝，深拷贝（copy模块）
+
+购物车 
+enumerate
+
+字符串操作
+
+字典
+
+元组
+
+集合：无需，去重，关系测试(并集，交集，差集，子集，父集，对称差集)
+
+开发规范，一行不要超过80个字符
+
+函数
+def function_name():
+	pass
+function()
+
+形参和实参
+位置参数：与形参一一对应  
+关键字参数：与形参顺序无关
+位置参数要在关键字之前
+默认参数：调用函数的时候，默认参数非必须传递
+默认参数用途：1，默认安装值
+
+*args  接受n位置参数，转换成元组
+**xargs 把n个关键字参数转化成字典
+
+全局变量，局部变量，global 
+
+递归函数
+1必须有一个明确的结束条件
+2问题规模越来越小
+3递归效率不高，递归次数过多会导致栈溢出  
+
+高阶函数  
+eval将字符串变字典
+
+
+装饰器：本质是函数，（装饰其他函数），就是为其他函数添加附加功能
+ATM
+原则：1，不能修改被装饰的函数的源代码
+	  2，不能修改被装饰函数的调用方式
+实现装饰器的知识储备
+1，函数即变量
+2，高阶函数
+	a，把一个函数名当做实参传递给另外一个函数
+	b，返回值中包含函数名
+	b，返回值中包含函数名
+3，嵌套函数
+高阶函数+嵌套函数==装饰器  4，10
+
+
+匿名函数lambda
+
+列表生成器[i**2 for i range(10)] 
+生成器  (i**2 for i range(10))  只有在调用时才会产生数据 只有一个__next__()方法
+yiled next send   13
+
+迭代器
+isinstance([],Iterator) 判断一个列表是不是迭代器
+iter([]) 将一个列表变为迭代器
+for 循环的本质就是迭代器
+
+json  pickle  dump  load
+ATM:  5  1
+程序的解耦
+
+
+模块
+导入方式
+import  module  将module下的所有内容赋值给本文件下一个叫module的变量
+import  module1  module2
+from module import  * （不建议用）
+from module import logger 将module下的文件拷贝到本文件下，
+from  module import  logger as  test
+导入模块的本质是把python文件解释一遍
+导入包的本质就是执行该包下面的__init__.py文件
+导入包里面的文件   5 4
+  修改__init__.py文件，from . import  test
+导入优化
+ from module_test import  test
+模块分类
+a:标准库
+b：开源模块
+c:自定义模块
+
+
+模块
+time
+	time.gmtime  结果是UTC时区
+	time.localtime  UTC+8时区（中国时区）
+	time.strftime（”格式“，struct_time） 格式化的字符串
+ 	time.strptime （”格式化的字符串“，”格式“）---struct_tine
+datetime
+	datetime.datetime.now
+random
+	random.random() 随机浮点数
+	random.randin() 随机整数
+	写一个生成随机数的函数
+os
+sys
+shutil
+zipfile
+shelve
+xml
+configParser
+hashlib
+re
+	match  
+	search
+	findall
+	分组匹配
+	split
+	sub
+	re.search("[a-z]+","abcdA",flags=re.I)
+计算器
+面向对象
+	class
+	object
+	封装
+	继承 6.8  组合
+	先重构父类的方法，在继承
+	多态   一种接口，多种实现  6.11
+	一些概念
+构造函数
+实例变量 6.5
+类变量
+析构函数：通常做一些收尾工作实例在释放，销毁的时候自动执行的，如关闭数据库连接，一些打开的临时文件
+私有属性
+私有方法  只能在函数内部使用 以双下划线开头定义（def __test(self)），别的方法在调用时（self.__test()）
+
+python3 新式类和经典类都是广度优先继承   6.10
+Python2	经典类 深度优先   新式类 广度优先
+
+
+静态方法（staticmethod）,实际上跟类没有什么关系了，只是类下面的一个函数，在静态方法里访问不了任何类里面的属性和方法
+类方法(classmothod),只能访问类变量，不能访问实例变量
+属性方法（property），把一个方法变成静态属性  7.3
+
+__doc__ 打印类的描述信息
+__module__  表示当前操作在哪个模块
+__class__    当前操作在哪个类
+__call__  调用类即可执行 
+__str__ 如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值
+__dict__ 查看类或对象中的所有成员 　
+7.6 高级类方法
+
+反射 7.7(重点)
+	hasatt（obj，name_str） 判断一个对象obj是否有对应的name_str方法
+	getattr（obj，name_str）根据字符串去获取obj对象里的对应的方法的内存地址
+	setattr(x,y,z)  x.y = z   z可以使方法也可以是静态属性
+	delattr
+	动态导入模块
+try 
+	代码
+except 错误类型 as e
+	print e
+except exception as e
+	未知错误
+else
+	没有错误执行这个
+finally
+	不管有错没错都会执行
+	
+缩进错误，语法错误，抓不住
+
+自定义异常 7.9.32
+
+断言 assert
+
+网络编程  https://www.jianshu.com/p/eff5ea9d9f71   https://www.jb51.net/article/144636.htm  https://www.cnblogs.com/xiao-apple36/p/9276777.html
+物数网传会表应
+socket  8.4  不支持多用户
+conn  链接标记位  客户端链接过来在服务端生成的一个实例
+addr 对方的地址
+os.popen
+
+
+线程是操作系统能够进行运算的最小单元，他被包含在进程之中，是进程中实际运作单元，一条线程指的是进程中的一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务
+
+粘包  8.6
+
+socketserver 8.9 
+
+Paramiko  远程连接Linux机器
+
+上传  8.11 
+  ssh秘钥验证原理
+  
+多线程  闭包
+an execution  context  一个执行的上下文
+
+线程共享创建它的进程的地址空间; 进程有自己的地址空间。
+线程可以直接访问其进程的数据段; 进程拥有自己父进程数据段的副本。
+线程可以直接与其进程的其他线程通信; 进程必须使用进程间通信来与兄弟进程通信。
+新线程很容易创建; 新进程程需要重复父进程。
+线程可以对同一进程的线程进行相当大的控制; 进程只能控制子进程。
+对主线程的更改（取消，优先级更改等）可能会影响进程的其他线程的行为; 对父进程的更改不会影响子进程。
+
+主线程与他启动的子线程是并行的
+
+
+守护进程  9.8
+全局解释器锁  9.9  GIL
+全局解释器锁：当初设计的时候是考虑多线程并发在单核CPU上会发生资源抢占现象，没有考虑到多核CPU，这是因为年代和硬件的限制 
+threading守护线程 https://blog.csdn.net/u012063703/article/details/51601579
+线程锁（互斥锁） look.acquire  look.release
+GIL与线程锁的关系 https://blog.csdn.net/simuLeo/article/details/80066870
+递归锁
+信号量
+事件  EVENT  9.13
+在函数里面修改全局变量需要在函数中global这个变量
+队列  queue FIFO  LIFO
+  作用
+  解耦，使程序直接实现松耦合
+  提高处理效率
+io操作不占用cpu
+计算占用cpu
+python多线程不适合CPU密集型的任务，适合IO密集型的
+
+线程之间可以通信，进行数据共享
+进程之间不能直接通信，数据共享，需要借助中间件（Queue相当于把数据capy一份）
+
+线程Queue
+进程Queue父进程与子进程进行交互，或者同属于同一父进程下的 多个子进程进行交互 
+manage
+进程锁
+进程池  先close  再join
+  Windows执行要加  import freeze_support  10.7
+  apply       同步  串行
+  apply_asny  异步执行 并行
+  
+携程
+
+
+gevent  遇到IO操作，自动切换上下文  https://www.jianshu.com/p/73ccb425a710
+gevent.spawn 起一个携程
+
+monkey_patch  10.10
+携程大并发  10.11  repr
+
+
+事件驱动： 根据一个事件做反应，比如说点击一下鼠标
+一个携程遇到Io操作就切换，在切换之前会注册一个回调函数，在系统做完IO操作时，调用回调函数，通知携程已经做完IO操作，可以随时切换回来
+阻塞IO ：blocking IO的特点就是在IO执行的两个阶段都被block了。两个阶段为，数据准备阶段，数据copy阶段
+非阻塞IO ：nonblocking IO的特点是用户进程需要不断的主动询问kernel数据好了没有
+IO多路复用
+	数据从内核缓冲区到用户缓冲区
+	内核态到用户态
+	因为程序无法直接访问内核
+异步IO ：用户进程发起read操作之后，立刻就可以开始去做其它的事。而另一方面，从kernel的角度，当它受到一个asynchronous read之后，首先它会立刻返回，所以不会对用户进程产生任何block。然后，kernel会等待数据准备完成，然后将数据拷贝到用户内存，当这一切都完成之后，kernel会给用户进程发送一个signal，告诉它read操作完成了。
+四种IO模式   10.13
+
+IO多路复用的三种模式  也称为事件驱动 
+	sellect  默认1024个连接，可以修改，当内核返回数据时，不会告诉select返回的是哪个连接的数据，需要select自己循环
+	poll
+	epoll    没有链接限制，可以同时处理好几十万的链接  边缘触发（如果有可读事件只会通知一次）和水平触发（会不断通知）
+		1G内存，可以允许十万连接
+	10.15听不太懂
+	10.16  socket sellect多并发
+
+
+rabbitMQ（没看）
+11.2
+
+
+redis
+https://www.cnblogs.com/wupeiqi/articles/5132791.html 
+setrange
+getrange
+
+hash原理
+
+redis  管道  11.4
+发布订阅  11,4
+
+
+数据库
+外键12.7.18
+内联查询
+
+事务性  begin 开启事务，cimmit  提交
+回滚    rollback
+触发器
+
+
+pymysql   12.10
+
+orm机构
+
+sqlalchemy  12.10
+	filter 支持比较运算，支持or in and  找不到返回空值
+	filter_by 用于简单列明，不支持运算符 ，找不到返回空值
+查询  12.12
+
+外键关联 12.13
+多对多  12，15
+中文  12，16,4
+
+常见网络攻击 xss  DOS  CSRF
+
+
+字典按照key排序
+sorted(d.items(), key= lambda x:x[1])
+

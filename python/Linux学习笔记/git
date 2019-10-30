@@ -1,0 +1,24 @@
+git
+特点 版本控制和分布式
+git  init
+
+git  add  files
+git   commit  -m  “this  is test”
+git  reset  --hrad   gitcommitid
+git  reflog
+git   status
+git  checkout   --text   丢弃工作区的改动
+git  diff   HEAD  --text
+git  diff   HEAD   HEAD^ -- text当前版本和上一个版本text文件的区别
+git  branch
+git  checkout  -b  name(新分支)  新建一个分支，并且切换到该分支
+git  checkout   name  切换分支
+git   merge   dev  合并dev分支到master分支
+git  branch  -d  dev  删除dev分支
+git  stash   保存现场
+git  stash  --list   查看现场
+git   stash  pop  恢复现场
+
+git  merge  -no-ff -m "禁用快速合并“  dev
+
+git   branch --set-upstream-to=origin/smart   smart    本地分支跟踪远程分支

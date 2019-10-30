@@ -1,0 +1,27 @@
+MEMCACHED
+1 memcached是什么，什么作用
+memcached是一个开源的，高性能的内存缓存软件，
+2 memcached服务在企业集群架构中的应用
+ 1，作为数据库的前段缓存应用
+   a，完整缓存（静态缓存）
+   b，热点缓存
+ 2,做集群的session会话共享
+3 memcached服务在不同企业业务应用场景中的工作流程(98.04.04)
+4 memcached服务的特点及工作原理
+ a，完全基于内存的
+ b，节点之间相互独立
+ c，异步IO模型，基于libevent模型的事件通知机制
+ d，数据已键值对形式存在key/value
+ e，C/S模式架构，C语言编写
+5简述memcached内存管理机制
+6 memcached对象删除原理与cache机制
+ 最少用算法，优先删除用的最少的
+7 memcached状态如何获取
+8CDN加速
+9 千万级PV/IP规模高性能高并发网站架构
+http://oldboy.blog.51cto.com/2561410/736710
+高并发访问的核心原则就是：把所有的用火访问尽量往前推
+存 set
+取 get
+删除 delete
+10 分布式存储，持久化存储

@@ -1,0 +1,163 @@
+mysql基本命令
+1   mysql -uroot  -p(mima)
+show databases
+show tables
+show  columns from  表明  查看表属性
+use 库名
+2 system  ls  执行bash命令
+3 grant  授权（重点） revoke（移除权限）  commit  rollback
+4 desc （查看表结构）
+5 update 
+  update test set name='wangzhaoyang' where id=3  
+  insert  批量插入（优化）
+  delete 
+  delete from test  where id=1;
+  select  少用*（优化）
+  select id，name from test limit 2；
+  select id，name from test where id=1；
+  truncate table test;(清空表)
+  rename table1  table2
+6 flush privilege
+7  Create   alter    drop
+8企业里面创建数据库 
+  1，根据开发程序确定字符集（utf-8）
+  2，编译时指定字符集
+  3然后建库时候默认创建即可
+  create datebase  westsos   charset  utf-8
+  4编译时没有指定字符集或者指定了和程序不同的字符集，创建数据库时指定字符集即可
+  5 grant     all privileges    on dbname.*    to username@localhost identified by "password"
+													username@%  百分号带边所有IP，但不包含localhost
+    授权命令   对应权限          目标库和表        	用户名主机          密码
+9  mysql  引擎   主键  
+10 索引  创建 alter  create  删除  drop alter
+   基本索引：
+   1，要在表的列上创建索引
+   2，索引会加快查询速度，但是会影响更新速度，因为要维护索引
+   3，索引不是越多越好，要在频繁查询的where后的条件列后创建索引
+   4，小表或者唯一值极少的列不建索引，要在大表以及不同内容多的列上创建索引
+   
+11  mysqldump
+    mysqldump -u 用户名 -p数据库名 >备份文件名
+	-A  所有库
+	-B  备份多个库  
+	-D  备份表结构
+	-t  只备份数据
+	-e  交互式
+	--compact 去掉注释，适合调试
+	mysqldump -u 用户名 -p数据库名 表名 >备份文件名
+	source /opt/mysql_bak_B.sql
+12 explain   查看执行计划
+13  show global status 查看整个数据库运行状态信息
+    show full  processlist 查看正在执行的完整SQL语句
+14  mysqlbinlog 用来记录MYSQL 内部增删改查等对MYSQL数据库有更新的内容的记录
+	mysqlbinlog mysqlbin.000020 --start-position=365 --stop-position=447 -r pos.sql
+	mysqlbinlog mysqlbin.000020 --start-datetime='2018-6-17 15:12:13' --stop-datetime='2018-6-17 16:12:13' -r  time.sql
+15  mysql
+16  mysqladmin
+17  mysql  主从复制
+18  增量恢复  前提是有全量和增量
+    恢复时建议停止对外服务
+	恢复全量，然后把增量日志中有问题的SQL语句删除
+19  mysql存储引擎（重点）
+    事务的四大特性（ACID）1，原子性，2，一致性 3，隔离性 4，持久性
+    myisam 
+	1 不支持事务
+	2 表级锁定
+	3读写互相阻塞
+	4 只会缓存索引
+	5读写速度较快
+	6 不支持外键约束
+	调优：设置合适索引；调整读写优先级；降低并发数；分解大的时间长的操作
+	InnoDB
+	1支持事务
+	2行级锁定
+	具有高效的缓存特性，缓存索引和数据
+	
+20  uptime
+21 MYSQL数据库优化
+  1 硬件优化 
+  a cpu b men c disk  用物理机别用虚拟机，因为数据库是IO密集型的  
+  2 软件优化
+  操作系统
+  编译优化
+  3 SQL语句优化
+  索引优化
+  大的复杂的SQL语句拆分成多个小的简单的
+  4 架构上的优化
+   1，业务拆分
+   2，数据库前段必须加缓存
+   3，某些业务应用使用nosql持久化存储，如redis memcache（粉丝关注，好友关系）
+   4，动态数据静态化
+   5，数据库集群读写分离。一主多从1
+   
+ grant  all   on  *.*  to  'root'@'%'  identified  by '123456'  
+create   table  student(
+    id int auto_increment,
+    name  char(32)  not  null,
+    age int  not  null,
+    register_date date  not  null,
+    primary key(id));
+insert  into student  (name,age,register_date)  value("wangzhaoyang",2,"2019-09-10");	
+select  *  from    student  limit  2  offset  2;(从第三条开始，往后查两条) offset偏移量
+select  *  from    student  where  id>3  and   age<19;
+select  *  from    student    where register_date  like  "2019-09%";   模糊查询
+update   student  set  name="lilei",age=33  where id=4;  修改一条   
+update   student  set  name="lilei",age=33  where id<4;   修改多条
+delete   from  student where  name='jack';
+select  *  from   student order  by  id desc;     排序，默认是升序  desc是降序
+select  name,count(*) as  name_count from  student  group  by  name; 分组统计  
+alter  table  student  add  sex  enum("M","F");   增加列
+alter  table  student  drop  sex  ;   删除
+alter  table  student modify  sex enum("M","F")  not  null;   修改数据类型  
+ alter  table  student change  sex gender  char(32) not  null default "x";  修改列名
+
+外键 
+   
+ 索引
+  show index  from  student  查看索引
+  
+  create index  index_name  on  student（name(32))  添加索引
+  drop  index  index_name  on  student  删除索引
+  show global variables like 'port';  查看mysql端口
+  
+  grant     all privileges    on test2.*    to 'root'@'139.155.131.188' identified by "password" with  grant option;
+  
+  
+drop	表级的删除；不能回滚；
+truncate	清空表；不记录单行删除日志；无法恢复；只能对于TABLE操作；不能在带FOREIGN KEY约束的表（被引用的表）中使用；计数从头开始；
+delete	配合where删除数据；会记录日志用于回归；会触发触发器；不减少索引和表的空间；
+
+触发器：https://www.cnblogs.com/zzwlovegfj/archive/2012/07/04/2576989.html
+三大范式https://blog.51cto.com/marvin89/2129893
+
+水平分表  https://www.cnblogs.com/butterfly100/p/9034281.html
+垂直分表
+	1、根据数值范围
+	2、根据数值取模
+  
+mysql索引查找方式
+范围查询(>、<、between、in)、模糊查询(like)、并集查询(or)
+创建数据库索引
+  
+  
+  
+  
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    
+	
+  
+  
+  
+  
+  
+  
+  

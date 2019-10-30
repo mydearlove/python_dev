@@ -1,0 +1,87 @@
+A5=[[i,i*i] for i in  range(10)]
+__init__  __new__ __call__     # 这块不是很懂
+os.path 只要用于对系统路径文件的操作
+sys.path 主要是对python解释器的系统环境参数的操作
+添加系统路径
+	BASEDIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+	sys.path.append(BASEDIR)
+\  1，转义符 2，路径名中用来连接路径名 3 编写太长代码用来换行
+翻转字符串print('ssdsdsd'[::-1])  
+
+对字典元素排序
+	alist=[{'name':'a','age':20},{'name':'b','age':21},{'name':'b','age':22}]
+	def sort_by_age(list1):
+		return  sorted(alist,key=lambda x:x['age'],reverse=True)
+	print(sort_by_age(alist))
+
+python高级
+
+	1 python的内存管理机制（还没弄懂）https://www.cnblogs.com/geaozhang/p/7111961.html
+		引用计数
+		垃圾回收  garbage collection
+		内存池机制
+map
+	map(lambda x:x+1,range(10))  # 1 2 3 4 5 .....
+	print(list(a))
+	需要用list转换，否则得到的是map对象
+	<map object at 0x00000000006B6FD0>
+filter
+	a=filter(lambda x:x%2,range(10))
+	print(list(a))
+	需要用list转换，否则得到的是filter对象
+
+设计模式
+闭包
+	在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，n那么将这个函数以及用到的变量称为闭包
+斐波拉切数列：
+	https://www.cnblogs.com/nklzj/p/6103117.html
+
+yield
+	yield就是保存当前程序执行状态，你用for循环的时候，每次取一个元素时候就会计算一次，他的好处是不用计算所有元素，而是用一次计算一次，可以节省很多空间
+is和==的区别
+	is判断的是对象是否相等，通过ID相等
+	==判断的是a和b的值是否相等，通过value相等
+	
+ 正则表达式的贪婪匹配(.*)和非贪婪匹配(.*?)
+	正则引擎默认是贪婪的，当出现"*"时,它会尽量去匹配尽可能长的字符串 
+	一个用于修正以上问题的可能方案是用"*"的惰性代替贪婪性。你可以在"*"后面紧跟一个问号"?"来达到这一点  
+这告诉正则引擎，尽可能少的重复上一个字符
+
+谈谈你对UWSGI和NGINX的理解
+	uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。Nginx中HttpUwsgiModule的作用是与uWSGI服务器进行交换。WSGI是一种Web服务器网关接口。它是一个Web服务器(如nginx，uWSGI等服务器)与web应用(如用Flask框架写的程序)通信的一种规范。
+
+restful  https://www.cnblogs.com/imyalost/p/7923230.html
+
+同源策略，jsonp跨域请求
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

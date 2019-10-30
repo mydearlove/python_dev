@@ -1,0 +1,66 @@
+https://blog.csdn.net/duke10/article/details/78896545 参考网页
+1，商业模式
+	B2B  企业对企业    	阿里
+	C2C  个人对个人   	瓜子二手车
+	B2C	 企业对个人		唯品会
+	C2B  个人对企业     
+	OTO  线上到线下		美团，饿了吗
+	F2C  工厂到个人     戴尔
+	B2B2C 企业企业个人  京东，天猫
+2，web开发流程
+	redis  中文文档http://doc.redisfans.com/
+	原型设置软件 axure
+	富文本编辑器 django-tinymce
+	class Meta:
+		db_table ='df_goods_test'
+	choice 元组
+	orm 基本操作 https://www.cnblogs.com/maociping/p/5255834.html
+	PE8规范，pythonic写法，变量命名规则
+	https://www.cnblogs.com/welan/p/9231530.html  项目介绍
+	https://www.cnblogs.com/xiaodaima/p/11245292.html   项目思路
+	itsdangerous   加密模块
+	celery    异步发邮件
+	https://www.cnblogs.com/think90/p/8541763.html   django文档
+	django-redis   设置缓存   https://django-redis-chs.readthedocs.io/zh_CN/latest/#
+	模板继承   14.05.01
+	login_requier  装饰器，判断用户是否登录
+	LoginRequiredMixin   判断用户是否登录
+	django  中文文档  https://docs.djangoproject.com/zh-hans/2.0/
+	fastDFS   分布式文件系统
+	nginx  +   fastdfs
+	django 缓存  https://docs.djangoproject.com/zh-hans/2.2/topics/cache/
+	autoescape  on
+	endautoescape
+	模板语言
+	haystack  全文检索框架
+	whoosh   搜索引擎
+	jieba  分词模块
+	悲观锁，乐观锁
+	事务的隔离级别
+	mysql  默认的隔离级别  可重复读  四个级别
+	python写一个简单的API
+	支付宝  API
+	 支付宝  python 接口
+	 uwsgi
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,93 @@
+HTML
+dig.chouti
+
+	20个标签
+	自闭合标签
+		meta 
+	主动闭合标签
+meta 页面编码  跳转，刷新，关键字，描述，IE兼容
+title
+link 搞图标
+style
+script
+CSS
+&nbsp  空格
+特殊符号https://www.cnblogs.com/web-d/archive/2010/04/16/1713298.html
+&<   大于号
+p 段落标签
+<br>换行
+h 标签
+span 块标签
+所有的标签分为块及标签  h系列（加大加粗）  p（段落之间间距）
+			和行内标签  span（白板）  a标签
+标签之间可以嵌套，标签存在的意义，css操作，js操作
+ChRome审查元素
+	定位
+	查看样式
+div  块级白板  
+
+get  把值全部放在url里面，   
+post 把数据放在内容里面
+<form  action="url:port" method = "get">
+	<input  type="text",name="user",value = "alex"/>
+	<input  type="password"name = "pwd"/>
+	<input  type="button" value="登录"/>
+	<input  type="submit" value="登录"/>
+	<input  type="radio " value="登1"，checked = “”checked/>单选框   value，name（相同互斥  checked默认值
+	<input  type="CheckBox " value="登录"/>复选框 value，name（批量选取）
+	<input  type="file" name="filename"/>   上传文件  依赖form表单一个属性<form  enctype="multipart/form-data">
+	input  type="reset" name="重置  重置
+	<textarea name = “name”> 默认值</textarea>  多行输入   
+	<select name = "city" size =“10” ，multiple = "multiple" >  multiple = multiple多选 ，默认单选  size显示多个，默认一个
+		<option value=1>aa</option>
+		<option value =2>bb</option>
+		<option value= 3>cc</option>
+	</select>    下拉框
+	
+	/form>
+a  
+	跳转 	<a href = "http://www.baidu.com",target = "_blank>百度</>  _blank在新页面打开
+
+	锚 href=“#某个标签的ID"  标签不能重复
+img 	
+	src
+	title
+	alt
+   <img src = "图片名" title = “大美女” style = “height：200px；width：200px alt= ”美女“  >
+列表
+	ul 
+		li
+	ol 
+		li
+	dl
+		dt
+		tt
+表格
+table
+	tr  行
+		td 列
+thead  表头
+	tr
+		th
+tbody
+	tr
+		td  colspan=2   站两个单元格 横向     rowspan=2  纵向占两个
+lable
+	用于点击文件，使得关联的标签获取光标
+	<lable for= "username">用户名</lable>
+	<input id= "username” type = “text” name = “user”/>
+
+fieledset
+	legend
+	
+RGB颜色对照表
+
+
+iframe
+	
+
+
+
+
+
+

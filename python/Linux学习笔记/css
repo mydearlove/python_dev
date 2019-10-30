@@ -1,0 +1,157 @@
+css
+	在标签上可以设置style属性
+		background-color:#2459a2；
+		height:48px；
+	编写css的样式
+		1.标签的style属性
+		2.写在head里面，style标签中写样式
+			-id选择器
+				#i1{
+					background-color：#2459a2；
+					height:48px；
+				}
+			-class选择器
+				.名称{
+					background-color：#2459a2；
+					height:48px；
+				}
+				<标签  class = “名称”></标签>
+			-标签选择器
+				div{
+					...
+				}
+				所有的div设置为此样式
+			-层级选择器（空格）
+				.c1 .c2
+			-组合选择器（逗号）
+				#i1，#2，#3{
+					background-color：#2459a2；
+					height:48px；
+				}
+			-属性选择器
+				对选择到的标签再属性进行一次筛选
+			优先级
+				标签上的style优先，编写顺序，就近原则
+		3 css样式可以写在单独文件中
+			<link rel = "stylesheet" href = "wenjianlujing.css"/>
+		4 注释
+		
+		  /*   dsdsds*/
+		5 边框
+			宽度，样式，颜色
+			border： 4px dotted red；
+			borde:    1px   solid  red
+		6
+			height  高度 百分比
+			width	宽度，像素，百分比
+			text-align：center  左右居中
+			line-height  垂直方向根据标签高度居中
+			color
+			font-size
+			font-weight 字体加粗
+			border-radius：50%  园
+		7  float
+			让标签飘起来，让块级标签也可以堆叠
+			网页开头  14.21
+			老子管不住，在最后加
+			<div style="clear;both;"></div>
+		8 display
+			dispaly = line  让标签消失
+			dispaly = inline  变为行内标签
+			display = block	  变成块标签
+			dispaly = inline-block
+						具有inline，默认自己有多少占多少
+						具有block属，可以设置高度，宽度，padding，margin
+			行内标签无法设置高度，宽度，padding，margin
+			块级标签可以设置
+		9 padding，margin（0，auto） 将标签居中
+			边距:
+			内边距  padding 
+			外边距  margin
+		10 自适应  和  改变大小变形  ：像素的宽度：最外层设置绝对宽度，里面百分比
+			左右滚动条的出现
+			宽度，百分比
+		11  默认img标签，有一个1px的边框
+			img{
+				border：0；
+			}
+
+		12 position：fixed；  右下角返回键
+			bottom：20px
+			right：20px
+			
+			relative+absolute
+		
+		13  opacity  0.5透明度
+			zindex  值大的在上面
+			overflow 
+				hidden  图片超出规定范围隐藏
+				auto		出现滚动条
+		
+		14  hover
+		 /*当鼠标移动到当前标签上时，以下css属性才生效*/
+			.pg-header .menu:hover{
+            background-color: blue;
+		15  background
+			background-image:url('image/4.gif'); # 默认，div大，图片重复访
+			background-repeat: repeat-y;
+			background-position-x:
+			background-position-y:
+			
+		16 页面布局   16.5
+		
+			主站-
+				<div class= "pg-header"></div>
+				<div class = "pg-body""></div>
+				<div class = "pg-footer"></div>
+			border-radius：50%  园
+			后台管理-
+				position:
+					fixed  		--永远固定在窗口的某个位置
+					relative	--单独使用无意义
+					absolute	--第一次定位，可以在指定的位置，滑轮滚动时不见了
+				a 
+					左侧菜单跟随滚动条
+					左侧菜单不懂   *******
+				
+			图表网站
+				fontawesome.io
+				
+			cursor: pointer;  小手	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		

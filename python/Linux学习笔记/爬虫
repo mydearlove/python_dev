@@ -1,0 +1,207 @@
+爬虫
+
+http
+	超文本传输协议
+	默认端口 80
+https
+	http+ssl（安全套接字）
+	默认端口 443
+200   成功
+302   临时转移至新的url
+307   临时转移至新的url
+404   not found
+403   拒绝访问
+500   服务器内部错误
+
+爬虫概念
+	爬虫是模拟浏览器发送请求，获取响应
+爬虫的流程
+	url -> 发送请求，获取响应  ->提取数据  -> 保存
+	
+通用爬虫： 通常指搜索引擎的爬虫
+pagerank
+
+聚焦爬虫：	针对特定网站的爬虫
+
+robots协议
+	爬虫要根据当前URL相对应的响应为准，当前url地址得到elements与url的响应不一样
+	页面的数据在
+		当前URL地址对应的响应中
+		其他的url地址对应的响应中
+			比如AJAX请求中
+		js生成的
+			部分数据在响应中
+			全部通过js生成
+request模块
+	requests get 请求
+		response  = requests.get("https://www.baidu.com")
+		print(type(response))
+		print(response.status_code)
+		print(type(response.text))
+		print(response.text)
+		print(response.cookies)
+		print(response.content)
+		print(response.content.decode("utf-8"))
+		
+		url解码  http://tool.chinaz.com/tools/urlencode.aspx
+		"wang{}yang".format("zhao")  format格式化字符串
+		https://www.baidu.com/?%E4%BC%A0%E6%99%BA%E6%92%AD%E5%AE%A2
+		https://www.baidu.com/?传智播客
+	requests  post请求
+		response  = requests.post("https://www.baidu.com"，data=data,headers=headers)
+		
+	
+	反向代理  nginx  不知道最终服务器地址
+	正向代理  vpn	知道最终服务器地址，比如访问谷歌
+	为什么爬虫需要代理，
+		让服务器以为不是同一个客户端在请求
+		防止我们的真是地址被透露，防止被追究
+		免费代理 https://proxy.mimvp.com/free.php
+		###使用代理IP
+		 准备一堆IP地址，组成IP池，随机选择一个IP来使用
+		 检查ip的可用性
+			可以request添加超时参数，判断IP地址的质量
+			在线代理ip质量检查网站
+			
+	携带cookie请求
+		携带一堆cookie进行请求，把cookie组成cookie池
+	请求登录之后的网站的思路  18.02  
+		字典推到式  {i:i+10 for i in range（10）}
+		实例化session
+		先试用session发送请求，登录网站，把cookie保存到session中
+		再使用session请求登录之后才能访问的网站，session能够自动的携带登录成功时保存的cookie，进行请求
+	不发送post请求，使用cookie获取登录后的页面  
+		cookie过期时间很长的网站
+		在cookie过期之前能够拿到所有的数据，比较麻烦
+		配合其他程序一起使用，其他程序专门获取cookie，当前程序专门请求页面
+	获取登录后页面的三种方式：
+		1，实例化session，使用session发送post请求，在使用他获取登录后的页面
+		2，headers中添加cookie键，值为cookie字符串
+		3，在请求方法中添加cookie参数，就收字典的cookie cookies = {i.split("=")[0]:i.split("=")[1] for i in cookies.split("; ")}
+
+		http://cn.python-requests.org/zh_CN/latest/  request中文文档
+	寻找登录的post地址
+		在form表单中寻找相对应的url地址
+			post的数据是input标签中的name的值为键，真正的用户名密码作为值的字典，post的url的地址就是action对应的地址
+		抓包，寻找url地址
+			勾选perserver log按钮，防止页面跳转
+	retrying 模块
+	jsonview
+	pprint  结构化打印
+	json.dumps(ret1,ensure_ascii=False indent=4)  18.04.02
+	json使用注意点
+		json中的字符串都是双引号引起来的，
+			如果不是，
+			eval能实现简单字符串的python类型转换，
+			replace 把单引号转成双引号
+	
+	 re.compile  编译
+	 pattern.match 从头找一个
+	 pattern.search	找一个
+	 pattern.findall 找所有
+	 pattern.sub  替换
+	 内涵段子爬虫  18.05.02
+	
+	xpath  xpath_helper  18.07.01  百度贴吧
+		https://www.w3school.com.cn/xpath/xpath_syntax.asp
+		nodename	选取此节点的所有子节点。
+		/	从根节点选取。
+		//	从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
+		.	选取当前节点。
+		..	选取当前节点的父节点。
+		@	选取属性。
+		
+		使用xpath helper是从element中提取的数据，但是爬虫是从url对应的响应，往往和element不一样
+		
+		获取文本
+			‘a/text（）’  获取a下的文本
+			‘a//text（）’ 获取a下的所有标签的文本
+			//a[text()='下一页']  根据文本获取
+		@符号
+			a/@href
+			//ur[@id="detail-list"]
+		//
+			zai xpath开始的时候代表从当前html中任意位置开始选择
+			li//a 表示的是li标签下的任意一个a标签
+		xpath包含
+			//div[contain(@class,'i')]   class包含i的标签
+		
+	lxml
+		lxml能够修正HTML代码，但是可能会出错
+			使用etree.tostring观察修改之后的样子，根据修改之后的html字符串写xpath
+		提取页面数据的思路
+			先分组，取到一个包含分组标签的列表
+			遍历，取其中每一组进行数据提取，不会造成数据的对应错乱
+		from   lxml import   etree
+		 element = etree.HTML(bytes,str) #把字符串转化为element对象
+		 element.tostring(element)  #把element对象转化为字符串
+		 
+	实现爬虫的套路
+		1，准备url
+			准备start_url
+				url地址规律不明显，总数不确定
+				通过代码提取下一页的url
+					xpath
+					寻找url地址，部分参数在当前的响应中（比如，当前页码总数和总的页码数早当前的响应中）
+			准备url_list
+				页码总数明确
+				url地址规律明显
+		2，发送请求，获取响应	
+			添加随机的user_agent，反反爬虫
+			添加随机的代理IP，反反爬虫
+			在对方判断出我们是爬虫后，应该添加更多的header字段，包括cookie
+			cookie的处理可以使用session来解决
+			准备一堆能用的cookie，组成cookie池
+				如果不登录
+					准备刚开始能够成功登陆对方网站的cookie，即节后对方网站设置在response中的cookie
+					下一次请求来的时候，使用之前的列表中的cookie来请求
+				如果登陆
+					准备多个账号
+					使用程序获取每个账号的cookie
+					之后请求登陆之后才能访问的网站随机的选择cookie
+		3，提取数据
+			确定数据的位置
+				如果数据在当前url地址中
+					提取的是列表页的数据
+						直接请求列表页的url地址，不用进入详情页
+					提取的是详情页的数据
+						1，确认url
+						2，发送请求
+						3，提取数据
+						4，返回
+				如果数据不在当前url地址中
+					在其他响应中寻找数据位置
+						1，从network中网下找
+						2，使用chrome中的过滤条件，选择出js，css，img之外的文件
+						3，使用Chrome的search all  file ，搜索数字和英文
+			数据的提取
+				xpath，从html中提取整块数据，先分组，之后每一组提取
+				json
+				re
+			
+		4，保存
+			保存在本地，text，json，csv（数据用逗号隔开，可以用excel打开）
+			保存在数据库
+			
+	selenium
+		 是一个用于Web应用程序测试的工具
+		 https://blog.csdn.net/qq_29186489/article/details/78661008
+	云打码
+	tesseract 图片识别工具
+	
+	https://npm.taobao.org/  工具下载网站
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

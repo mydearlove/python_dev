@@ -1,0 +1,247 @@
+linux命令总结100个
+beyond compare  对比软件   EDRAW 画图软件    12.9
+
+1，mkdir 创建目录的命令 make directorys
+ls  显示目录或者文件
+cd   切换目录
+echo 打印输出内容（printf复杂的输出）
+vi/vim 编辑器
+cat 查看问价内容
+cat >> oldboy.txt <<oldboy
+1 
+2
+3
+oldboy
+cp copy文件或者目录
+mv 移动文件或者目录
+rm 删除 文件或者目录
+head 头部 显示文件头部 -n行数 默认10行
+tail 尾部 显示文件尾部 -n行数 默认10行
+grep
+sed
+awk
+man
+LANG=en  临时调整字符集
+man
+touch
+which  查看命令的路径whereis locate find
+alias
+find   查找命令 -type (f d) -name  "ddd"  按名字查找
+xargs
+alias
+unalias
+seq
+pwd
+diff
+vimdiff
+passwd
+echo 123456 | passwd --stdin user002
+echo "user003:123456" | chpasswd
+
+
+yum
+rpm
+
+chkconfig 查看设置开机自动软件
+
+
+lsof
+隐藏系统版本，锁定系统文件
+chattr
+w查看当前系统能够用户
+uname
+tar
+shutdown
+last
+file 查看文件类型
+ln -s  穿件软连接
+more 查看文件但是不能向上滚动
+less 查看文件但是不能向下滚动
+tar
+wc -l
+
+内置命令
+stat
+..上级目录
+. 当前目录 （.任意一个字符，隐藏文件的标识，可以使一个配置文件生效（.  /etc/profile）））
+date
+chmod
+chown
+chgrp
+passwd
+chage
+useradd
+userdel
+groupadd
+groupdel
+groupdel
+usermod
+id
+at
+su
+sudo
+visudo  98hang   用户权限集中管理方案  20章
+crontab		
+要领1：为定时任务规则加必要的注释
+要领2：执行shell脚本任务前加/bin/sh
+要领3：定时任务命令或脚本结尾加>/dev/null 2>&1
+要领4：定时任务命令或者程序最好写到脚本里执行
+要领5：在指定用户下执行相关定时任务
+要领6：生产任务程序不要随意打印输出信息 tar zcf  
+要领7：定时任务执行的脚本要规范/server/scripts
+要领8：配置定时任务规范操作过程
+strace  追踪
+straceroute 
+route
+fdisk  适用于小于2T的磁盘
+parted  大于两T的磁盘
+mount    umount   -lf  /mnt  强制卸载
+umount
+mkfs
+df  -h
+du -sh
+tune2fs
+dumpe2fs
+dd if=/dev/sda  of=mbr.bin   bs=512 count=1
+sftp   -port22   test@Ip   put  get 
+expact
+scp   rsync+intofy实时同步
+s
+uniq  去重  -c  计数
+sort 
+rename
+dmesg
+kill  -9 进程号
+killall 进程名
+pkill 进程名
+dirname
+basename
+内置命令
+echo
+eval
+exec
+export
+read
+shift
+exit
+
+iptables
+
+pgrep 查找匹配条件的进程
+strace 跟踪一个进程的系统调用
+ltrace 跟踪进程调用库函数的情况
+vmstat 报告虚拟内存统计信息
+ 
+
+150个命令  25 10
+
+
+linux 计算表达式
+
+	
+
+
+
+
+
+
+
+符号：
+：多个命令的分隔符
+/跟或者路径的分隔符
+>重定向（数据流朝着的方向流动），覆盖原来的文件
+>>追加重定向，在原来的文件的{结尾}，追加内容
+<标准输出重定向
+<< 输入重定向
+..上级目录
+.当前目录
+~用户家目录
+|管道
+ 
+ 
+ Linux系统简单调优
+	 1，关闭selinux  getenforce   setforce
+	 2，linux的运行模式 init 设置nunlevel为3  Linux系统的启动流程
+	 3，关闭不需要的应用
+	 4，最小化原则
+	 1）安装系统最小化
+	 2）开启全程序服务最小化
+	 3）操作最小化原则
+	 4）登录最小化原则，平时没有需不要用root登录
+	 5）权限最小化
+	 6）配置参数
+	 https://www.cnblogs.com/0zcl/p/6793375.html
+ 
+ 描述Linux下文件删除的原理
+ 文件删除分为 i_link  i_count 当文件硬链接加一时，i_link加一，当有程序占用时i_count加一。删除文件的条件是硬链接数为零，并且没有用程序占用
+ 
+ 开机过程
+ 软硬链接qubie
+ 
+ 
+ day10
+ IP地址分类
+ DNS域名解析
+  
+raid  0 1 5 10
+  grub
+  
+CDN  分布式web缓存
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
